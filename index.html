@@ -80,6 +80,7 @@
   background-color: lightblue;
   width: 100%;
   z-index: 1;
+  top: 55%;
 }
 
 .subnav-content a {
@@ -180,8 +181,8 @@ button {
 .flip-card {
   background-color: transparent;
   width: 100%;
-  height: 500px;
-  perspective: 1000px;
+  height: 250px;
+  perspective: 500px;
 }
 
 .flip-card-inner {
@@ -215,6 +216,21 @@ button {
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
+}
+
+/*.centerimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}*/
+
+.centerimg {
+  
+  width: 50%;
+  position: absolute;
+  top: 25%;
+  left: 25%;
 }
 
 
@@ -255,15 +271,18 @@ button {
     </div>
   </div>
 </div>
+<div style="height:20px; background-color:white; ">
+
+  </div>
 
 <!-- Starter page -->
-<div class="w3-row-padding">
+<div class="w3-row-padding home">
 
   <div class="w3-third">
     <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="./webimg/portrait/w.png" alt="Avatar" style="width:100%;">
+          <img src="./webimg/natural/astro.jpg" class="centerimg" alt="Avatar">
         </div>
         <div class="flip-card-back">
           <h1>John Doe</h1> 
@@ -278,7 +297,7 @@ button {
        <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="./webimg/portrait/w.png" alt="Avatar" style="width:100%;">
+          <img src="./webimg/natural/astro.jpg" alt="Avatar" class="centerimg">
         </div>
         <div class="flip-card-back">
           <h1>John Doe</h1> 
@@ -293,7 +312,7 @@ button {
       <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="./webimg/portrait/w.png" alt="Avatar" style="width:100%;">
+          <img src="./webimg/natural/astro.jpg" alt="Avatar" class="centerimg">
         </div>
         <div class="flip-card-back">
           <h1>John Doe</h1> 
@@ -319,11 +338,13 @@ button {
     <img src="./webimg/natural/forest.jpg" style="width:100%">
     <img src="./webimg/natural/panorama.jpg"  style="width:100%">
     <img src="./webimg/natural/rockswater.jpg"  style="width:100%">
-     <img src="./webimg/natural/waterpart.jpg"  style="width:100%">
+    <img src="./webimg/natural/waterpart.jpg"  style="width:100%">
+    <img src="./webimg/natural/felho2.png"  style="width:100%">
   </div>
   <div class="column">
     <img src="./webimg/natural/sundown.jpg" style="width:100%">
     <img src="./webimg/natural/sundown2.jpg"  style="width:100%">
+    <img src="./webimg/natural/night2.jpg"  style="width:100%">
   </div>  
   <div class="column">
     <img src="./webimg/natural/water.jpg" style="width:100%">
@@ -354,6 +375,7 @@ button {
     <img src="./webimg/portrait/1.jpg" style="width:100%">
     <img src="./webimg/portrait/2.jpg"  style="width:100%">
     <img src="./webimg/portrait/3.jpg" style="width:100%">
+    <img src="./webimg/portrait/szirt.jpg" style="width:100%">
   </div>
 </div>
 
@@ -385,6 +407,7 @@ button {
 		var item = document.getElementById(selectGallery);
 		item.style.display = "flex";
     deletGame();
+    // deletHome();
 
 	};		
 
@@ -408,6 +431,19 @@ button {
   deletGame();
 
 </script>
+
+<script type="text/javascript">
+
+  function deletHome() {
+    var item = document.getElementByClassName(home);
+    item.style.display = "none";
+    console.log("deletHome");
+  };    
+
+
+
+</script>
+
 
 
 
