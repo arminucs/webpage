@@ -15,11 +15,14 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Potta+One&display=swap');
 
-		body, html {
+	body, html {
 	  height: 100%;
 	  margin: 0;
-	  font-family: 'Open Sans', sans-serif;
 	}
+
+  body, html, h1, h2 {
+    font-family: 'Open Sans', sans-serif;
+  }
 
 	.hero-image {
 	  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("./webimg/portrait/desert2.jpg");
@@ -81,6 +84,7 @@
   width: 100%;
   z-index: 1;
   top: 55%;
+  height: 5%;
 }
 
 .subnav-content a {
@@ -106,18 +110,10 @@ p{
 }
 
 
-
-
-
-
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-font-family: 'Open Sans', sans-serif;
-}
 
 .header {
   text-align: center;
@@ -182,7 +178,7 @@ button {
   background-color: transparent;
   width: 100%;
   height: 250px;
-  perspective: 500px;
+  perspective: 5000px;
 }
 
 .flip-card-inner {
@@ -227,14 +223,12 @@ button {
 
 .centerimg {
   
-  width: 50%;
+  height: 80%;
+  width: 80%;
   position: absolute;
-  top: 25%;
-  left: 25%;
+  top: 10%;
+  left: 10%;
 }
-
-
-
 
 
 </style>
@@ -247,27 +241,27 @@ button {
 <div class="hero-image">
   <div class="hero-text">
     <h1>Hi I'm Ármin</h1>
-    <p>And I'm a Photographer</p>
+    <p>And I'm 14 years old</p>
     <button>About me</button>
   </div>
 </div>
 
 <div class="navbar">
-  <a href="#home">Home</a>
+  <a href="#home" onclick="showHome(); deletGallery(); deletGame();">Home</a>
   <div class="subnav">
     <button class="subnavbtn">Game<i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#lol" onclick="deletGame('lol')">League of Legends</a>
-      <a href="#ow" onclick="deletGame('ow')">Overwatch</a>
-      <a href="#r6" onclick="deletGame('r6')">Rainbow Six:Siege</a>
+      <a href="#lol" onclick="deletGame('lol'); deletHome();">League of Legends</a>
+      <a href="#ow" onclick="deletGame('pubg'); deletHome();">PUBG</a>
+      <a href="#r6" onclick="deletGame('r6'); deletHome();">Rainbow Six:Siege</a>
     </div>
   </div> 
   <div class="subnav">
     <button class="subnavbtn">Gallery<i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#nature" onclick="deletGallery('nature')">Natural</a>
-      <a href="#sport" onclick="deletGallery('sport')">Sport</a>
-      <a href="#portrait" onclick="deletGallery('portrait')">Portait</a>
+      <a href="#nature" onclick="deletGallery('nature'); deletHome();">Natural</a>
+      <a href="#sport" onclick="deletGallery('sport'); deletHome();">Sport</a>
+      <a href="#portrait" onclick="deletGallery('portrait'); deletHome();">Portait</a>
     </div>
   </div>
 </div>
@@ -385,8 +379,8 @@ button {
 </iframe>
 </div>
 
-<div id="ow" class="game">
-  <iframe src="https://overwatch.op.gg/detail/quick/76050201198231165065170" width="100%" height="400" style="border:1px solid black;">
+<div id="pubg" class="game">
+  <iframe src="https://pubg.op.gg/user/Arminusz2007" width="100%" height="400" style="border:1px solid black;">
   </iframe>
   
 </div>
@@ -398,20 +392,38 @@ button {
 
 <script type="text/javascript">
 
-	function deletGallery(selectGallery) {
-		var items = document.querySelectorAll(".gallery");
-		console.log(items.length);
-		for(i=0; i<items.length; i++){
-			items[i].style.display = "none";
-			};
-		var item = document.getElementById(selectGallery);
-		item.style.display = "flex";
-    deletGame();
-    // deletHome();
+  function deletHome() {
+    var item = document.getElementsByClassName("home")[0];
+    item.style.display = "none";
+  };    
 
-	};		
+  function showHome() {
+    var item = document.getElementsByClassName("home")[0];
+    item.style.display = "block";
+  };    
 
-	deletGallery();
+
+
+</script>
+
+
+<script type="text/javascript">
+
+  function deletGallery(selectGallery) {
+    var items = document.querySelectorAll(".gallery");
+    console.log(items.length);
+    for(i=0; i<items.length; i++){
+      items[i].style.display = "none";
+      };
+    var item = document.getElementById(selectGallery);
+    if(item) {
+      item.style.display = "flex";
+    }
+
+    // deletHome(); 
+
+  };    
+
 
 </script>
 
@@ -424,23 +436,15 @@ button {
       items[i].style.display = "none";
       };
     var item = document.getElementById(selectGame);
-    item.style.display = "flex";
-    deletGallery();
+    if(item) {
+      item.style.display = "flex";
+    }
+
+    // deletHome();
   };    
 
   deletGame();
-
-</script>
-
-<script type="text/javascript">
-
-  function deletHome() {
-    var item = document.getElementByClassName(home);
-    item.style.display = "none";
-    console.log("deletHome");
-  };    
-
-
+  deletGallery();
 
 </script>
 
