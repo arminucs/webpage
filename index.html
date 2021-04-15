@@ -73,14 +73,14 @@
 }
 
 .navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: #488f9c;
+  background-color: black;
 }
 
 .subnav-content {
   display: none;
   position: absolute;
   left: 0;
-  background-color: lightblue;
+  background-color: grey;
   width: 100%;
   z-index: 1;
   top: 55%;
@@ -209,7 +209,7 @@ button {
 }
 
 .flip-card-back {
-  background-color: #2980b9;
+  background-color: grey;
   color: white;
   transform: rotateY(180deg);
 }
@@ -231,6 +231,72 @@ button {
 }
 
 
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 15%; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 </style>
 
 
@@ -238,11 +304,26 @@ button {
 <body>
 
 
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+
+
 <div class="hero-image">
   <div class="hero-text">
     <h1>Hi I'm Ármin</h1>
     <p>And I'm 14 years old</p>
-    <button>About me</button>
+    <button class="button" id="myBtn"><span>About me</span></button>
   </div>
 </div>
 
@@ -251,17 +332,17 @@ button {
   <div class="subnav">
     <button class="subnavbtn">Game<i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#lol" onclick="deletGame('lol'); deletHome();">League of Legends</a>
-      <a href="#ow" onclick="deletGame('pubg'); deletHome();">PUBG</a>
-      <a href="#r6" onclick="deletGame('r6'); deletHome();">Rainbow Six:Siege</a>
+      <a href="#lol" onclick="deletGame('lol'); deletHome(); deletGallery();">League of Legends</a>
+      <a href="#ow" onclick="deletGame('pubg'); deletHome(); deletGallery();">PUBG</a>
+      <a href="#r6" onclick="deletGame('r6'); deletHome(); deletGallery();">Rainbow Six:Siege</a>
     </div>
   </div> 
   <div class="subnav">
     <button class="subnavbtn">Gallery<i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#nature" onclick="deletGallery('nature'); deletHome();">Natural</a>
-      <a href="#sport" onclick="deletGallery('sport'); deletHome();">Sport</a>
-      <a href="#portrait" onclick="deletGallery('portrait'); deletHome();">Portait</a>
+      <a href="#nature" onclick="deletGallery('nature'); deletHome(); deletGame();">Natural</a>
+      <a href="#sport" onclick="deletGallery('sport'); deletHome(); deletGame();">Sport</a>
+      <a href="#portrait" onclick="deletGallery('portrait'); deletHome(); deletGame();">Portait</a>
     </div>
   </div>
 </div>
@@ -276,12 +357,11 @@ button {
     <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="./webimg/natural/astroimg.jpg" class="centerimg" alt="Avatar">
+          <img src="./webimg/portrait/gép.jpg" class="centerimg" alt="Avatar">
         </div>
         <div class="flip-card-back">
-          <h1>John Doe</h1> 
-          <p>Architect & Engineer</p> 
-          <p>We love that guy</p>
+          <h1>Game</h1> 
+          <p>In that option you can see my stats and what games i play</p> 
         </div>
       </div>
     </div>
@@ -291,12 +371,11 @@ button {
        <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="./webimg/natural/astroimg.jpg" alt="Avatar" class="centerimg">
+          <img src="./webimg/natural/waterpart.jpg" alt="Avatar" class="centerimg">
         </div>
         <div class="flip-card-back">
-          <h1>John Doe</h1> 
-          <p>Architect & Engineer</p> 
-          <p>We love that guy</p>
+          <h1>Gallery</h1> 
+          <p>In that option you can see my favorite own photos</p> 
         </div>
       </div>
     </div>
@@ -309,9 +388,8 @@ button {
           <img src="./webimg/natural/astroimg.jpg" alt="Avatar" class="centerimg">
         </div>
         <div class="flip-card-back">
-          <h1>John Doe</h1> 
-          <p>Architect & Engineer</p> 
-          <p>We love that guy</p>
+          <h1>About me</h1> 
+          <p>If you press this button, you can know more about me</p> 
         </div>
       </div>
     </div>
@@ -446,6 +524,35 @@ button {
   deletGame();
   deletGallery();
 
+</script>
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 </script>
 
 
